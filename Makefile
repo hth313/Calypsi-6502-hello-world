@@ -1,6 +1,6 @@
 VPATH = src
 
-C64 = module/calypsi-6502-commodore
+C64 = module/Calypsi-6502-Commodore
 
 # Common source files
 ASM_SRCS =
