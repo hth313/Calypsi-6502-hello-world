@@ -1,3 +1,6 @@
 obj/*.o
 obj/*.lst
-aout.elf
+hello-c64.lst
+hello-debug.lst
+hello.elf
+hello.prg
