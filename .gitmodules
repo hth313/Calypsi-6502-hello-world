@@ -1,0 +1,3 @@
+[submodule "module/calypsi-6502-commodore"]
+	path = module/calypsi-6502-commodore
+	url = https://github.com/hth313/calypsi-6502-commodore.git
