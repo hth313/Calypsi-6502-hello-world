@@ -36,5 +36,5 @@ $(C64_LIB):
 
 clean:
 	-rm $(OBJS) $(OBJS:%.o=%.lst) $(OBJS_DEBUG) $(OBJS_DEBUG:%.o=%.lst) $(C64_LIB)
-	-rm hello.elf hello.prg
+	-rm hello.elf hello.prg hello-c64.lst hello-debug.lst
 	-(cd $(C64) ; make clean)
