@@ -14,10 +14,10 @@ OBJS = $(ASM_SRCS:%.s=obj/%.o) $(C_SRCS:%.c=obj/%.o)
 OBJS_DEBUG = $(ASM_SRCS:%.s=obj/%-debug.o) $(C_SRCS:%.c=obj/%-debug.o)
 
 obj/%.o: %.s
-	as6502 --core=6502 --list-file=$(@:%.o=%.lst) -o $@ $<
+	as6502 --core=6502 --target=c64 --list-file=$(@:%.o=%.lst) -o $@ $<
 
 obj/%.o: %.c
-	cc6502 --core=6502 -O2 --list-file=$(@:%.o=%.lst) -o $@ $< -DCOMMODORE
+	cc6502 --core=6502 --target=c64 -O2 --list-file=$(@:%.o=%.lst) -o $@ $< -DCOMMODORE
 
 obj/%-debug.o: %.s
 	as6502 --core=6502 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
