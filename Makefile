@@ -1,7 +1,5 @@
 VPATH = src
 
-C64 = module/Calypsi-6502-Commodore
-
 # Common source files
 ASM_SRCS =
 C_SRCS = main.c
@@ -23,15 +21,11 @@ obj/%-debug.o: %.c
 	cc6502 --target=c64 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
 
 hello.elf: $(OBJS_DEBUG)
-	ln6502 --target=c64 c64-plain.scm --debug -o $@ $^ --list-file=hello-debug.lst --cross-reference --rtattr printf=reduced --semi-hosted --verbose
+	ln6502 --target=c64 c64-plain.scm --debug -o $@ $^ --list-file=hello-debug.lst --semi-hosted --verbose
 
 hello.prg:  $(OBJS)
-	ln6502 --target=c64 c64-plain.scm -o $@ $^  --output-format=prg --list-file=hello-c64.lst --cross-reference --rtattr printf=reduced --rtattr cstartup=c64
-
-$(C64_LIB):
-	(cd $(C64) ; make all)
+	ln6502 --target=c64 c64-plain.scm -o $@ $^  --output-format=prg --list-file=hello-c64.lst
 
 clean:
 	-rm $(OBJS) $(OBJS:%.o=%.lst) $(OBJS_DEBUG) $(OBJS_DEBUG:%.o=%.lst) $(C64_LIB)
 	-rm hello.elf hello.prg hello-c64.lst hello-debug.lst
-	-(cd $(C64) ; make clean)
