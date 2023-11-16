@@ -15,13 +15,13 @@ obj/%.o: %.c
 	cc6502 --target=c64 -O2 --list-file=$(@:%.o=%.lst) -o $@ $<
 
 obj/%-debug.o: %.s
-	as6502 --target=c64 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
+	as6502 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
 
 obj/%-debug.o: %.c
-	cc6502 --target=c64 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
+	cc6502 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
 
 hello.elf: $(OBJS_DEBUG)
-	ln6502 --target=c64 c64-plain.scm --debug -o $@ $^ --list-file=hello-debug.lst --semi-hosted --verbose
+	ln6502 linker.scm --debug -o $@ $^ --list-file=hello-debug.lst --semi-hosted --verbose
 
 hello.prg:  $(OBJS)
 	ln6502 --target=c64 c64-plain.scm -o $@ $^  --output-format=prg --list-file=hello-c64.lst
