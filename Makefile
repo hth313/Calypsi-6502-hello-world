@@ -21,10 +21,10 @@ obj/%-debug.o: %.c
 	cc6502 --debug --list-file=$(@:%.o=%.lst) -o $@ $<
 
 hello.elf: $(OBJS_DEBUG)
-	ln6502 linker.scm --debug -o $@ $^ --list-file=hello-debug.lst --semi-hosted --verbose
+	ln6502 linker.scm --debug -o $@ $^ --list-file=hello-debug.lst --semi-hosted --verbose --cstack-size=512
 
 hello.prg:  $(OBJS)
-	ln6502 --target=c64 c64-plain.scm -o $@ $^  --output-format=prg --list-file=hello-c64.lst
+	ln6502 --target=c64 c64-plain.scm -o $@ $^  --output-format=prg --list-file=hello-c64.lst --cstack-size=512
 
 clean:
 	-rm $(OBJS) $(OBJS:%.o=%.lst) $(OBJS_DEBUG) $(OBJS_DEBUG:%.o=%.lst) $(C64_LIB)
